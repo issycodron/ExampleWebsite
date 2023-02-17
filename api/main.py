@@ -1,10 +1,13 @@
 from fastapi import FastAPI, Request
 import datetime
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 
 from . import settings
 
+
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 """@app.get("/")
 async def homepage(): #async means server can run on multiple threads
